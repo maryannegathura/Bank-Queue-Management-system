@@ -1,0 +1,14 @@
+                 BANK QUEUE MANAGEMENT SYSTEM
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+        Customer Class              Queue Class
+        (Person 3)                  (YOU – Person 1)
+             │                           │
+             └─────────────┬─────────────┘
+                           │
+                     Main Program
+                     (Person 3)
+                           │
+                    Priority Queue
+                     (Person 2)

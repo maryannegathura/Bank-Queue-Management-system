@@ -1,0 +1,48 @@
+PART 1 – QUEUE IMPLEMENTATION
+
+Develop a Queue data structure for the Bank Queue Management System using C++.
+
+Requirements:
+
+1. Create a Queue class that follows the FIFO principle:
+   First In, First Out.
+
+2. The Queue must support the following operations:
+   - enqueue(): Add a customer to the rear of the queue.
+   - dequeue(): Remove a customer from the front of the queue.
+   - front(): Return/view the customer at the front.
+   - isEmpty(): Check whether the queue contains no customers.
+   - size(): Return the number of customers in the queue.
+   - display(): Display all customers currently waiting.
+
+3. The Queue should be implemented using a suitable data structure,
+   preferably a linked list, so that customers can be dynamically added
+   and removed.
+
+4. The Queue should correctly handle:
+   - Adding the first customer.
+   - Adding multiple customers.
+   - Removing the first customer.
+   - Removing customers until the queue becomes empty.
+   - Attempting to dequeue from an empty queue.
+   - Attempting to view the front of an empty queue.
+
+5. The Queue should maintain:
+   - front pointer: points to the first customer.
+   - rear pointer: points to the last customer.
+
+6. The Queue should follow FIFO:
+   The first customer who joins the queue should be the first customer
+   served.
+
+7. The Queue class should be written separately so that the main program
+   and Customer class can use it later.
+
+8. Avoid putting the main program/menu inside the Queue class.
+   The Queue class should only be responsible for queue-related
+   operations.
+
+9. The Queue should be compatible with the Customer class being developed
+   by another group member.
+
+10. Include comments explaining the important parts of the code.

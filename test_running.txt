@@ -1,0 +1,29 @@
+BANK QUEUE MANAGEMENT SYSTEM
+=============================
+
+1. Checking if queue is empty...
+The queue is empty.
+
+2. Adding customers...
+Customers added successfully.
+
+3. Displaying the queue...
+Queue: 101 -> 102 -> 103 -> 104
+
+4. Checking queue size...
+Number of customers waiting: 4
+
+5. Checking the customer at the front...
+Customer at the front: 101
+
+6. Serving the first customer...
+Customer served: 101
+
+7. Queue after serving one customer...
+Queue: 102 -> 103 -> 104
+
+8. Checking the new front customer...
+New customer at the front: 102
+
+9. Checking the new queue size...
+Number of customers waiting: 3
