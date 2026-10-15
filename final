@@ -1,0 +1,151 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+// --- Node Class (from teammate's Queue.h) ---
+template <typename T>
+class Node {
+public:
+    T data;
+    Node<T>* next;
+
+    Node(T value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+// --- Queue Class (from teammate's Queue.h) ---
+template <typename T>
+class Queue {
+private:
+    Node<T>* frontNode;
+    Node<T>* rearNode;
+    int count;
+
+public:
+    Queue() {
+        frontNode = nullptr;
+        rearNode = nullptr;
+        count = 0;
+    }
+
+    ~Queue() {
+        while (!isEmpty()) {
+            dequeue();
+        }
+    }
+
+    void enqueue(T value) {
+        Node<T>* newNode = new Node<T>(value);
+        if (isEmpty()) {
+            frontNode = newNode;
+            rearNode = newNode;
+        } else {
+            rearNode->next = newNode;
+            rearNode = newNode;
+        }
+        count++;
+    }
+
+    T dequeue() {
+        if (isEmpty()) {
+            throw runtime_error("Cannot dequeue. The queue is empty.");
+        }
+        Node<T>* temp = frontNode;
+        T value = temp->data;
+        frontNode = frontNode->next;
+        if (frontNode == nullptr) {
+            rearNode = nullptr;
+        }
+        delete temp;
+        count--;
+        return value;
+    }
+
+    T front() {
+        if (isEmpty()) {
+            throw runtime_error("The queue is empty.");
+        }
+        return frontNode->data;
+    }
+
+    bool isEmpty() {
+        return frontNode == nullptr;
+    }
+
+    int size() {
+        return count;
+    }
+
+    void display() {
+        if (isEmpty()) {
+            cout << "The queue is empty." << endl;
+            return;
+        }
+        Node<T>* current = frontNode;
+        cout << "Queue: ";
+        while (current != nullptr) {
+            cout << current->data;
+            if (current->next != nullptr) {
+                cout << " -> ";
+            }
+            current = current->next;
+        }
+        cout << endl;
+    }
+};
+
+// --- Main Testing Program (from teammate's test_queue.cpp) ---
+int main() {
+    Queue<int> bankQueue;
+
+    cout << "BANK QUEUE MANAGEMENT SYSTEM" << endl;
+    cout << "=============================" << endl;
+
+    // Test 1: Check if queue is empty[cite: 8, 9]
+    cout << "\n1. Checking if queue is empty..." << endl;
+    if (bankQueue.isEmpty()) {
+        cout << "The queue is empty." << endl;
+    } else {
+        cout << "The queue is not empty." << endl;
+    }
+
+    // Test 2: Add customers to the queue[cite: 8, 9]
+    cout << "\n2. Adding customers..." << endl;
+    bankQueue.enqueue(101);
+    bankQueue.enqueue(102);
+    bankQueue.enqueue(103);
+    bankQueue.enqueue(104);
+    cout << "Customers added successfully." << endl;
+
+    // Test 3: Display the queue[cite: 8, 9]
+    cout << "\n3. Displaying the queue..." << endl;
+    bankQueue.display();
+
+    // Test 4: Check queue size[cite: 8, 9]
+    cout << "\n4. Checking queue size..." << endl;
+    cout << "Number of customers waiting: " << bankQueue.size() << endl;
+
+    // Test 5: Check front customer[cite: 8, 9]
+    cout << "\n5. Checking the customer at the front..." << endl;
+    cout << "Customer at the front: " << bankQueue.front() << endl;
+
+    // Test 6: Dequeue a customer[cite: 8, 9]
+    cout << "\n6. Serving the first customer..." << endl;
+    cout << "Customer served: " << bankQueue.dequeue() << endl;
+
+    // Test 7: Display queue after dequeue[cite: 8, 9]
+    cout << "\n7. Queue after serving one customer..." << endl;
+    bankQueue.display();
+
+    // Test 8: Check new front[cite: 8, 9]
+    cout << "\n8. Checking the new front customer..." << endl;
+    cout << "New customer at the front: " << bankQueue.front() << endl;
+
+    // Test 9: Check new size[cite: 8, 9]
+    cout << "\n9. Checking the new queue size..." << endl;
+    cout << "Number of customers waiting: " << bankQueue.size() << endl;
+
+    return 0;
+}
